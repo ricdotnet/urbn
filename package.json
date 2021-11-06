@@ -15,7 +15,11 @@
     "urbn",
     "define"
   ],
-  "author": "ricdotnet",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ricdotnet/urbn"
+  },
+  "author": "ricdotnet <me@rrocha.uk>",
   "license": "ISC",
   "dependencies": {
     "node": "14.18.1"
