@@ -1,0 +1,23 @@
+{
+  "name": "urbn",
+  "version": "1.2.3",
+  "description": "get urban dictionary definitions displayed on your app the easy way",
+  "main": "urbn.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "urban",
+    "dictionary",
+    "words",
+    "definition",
+    "dict",
+    "urbn",
+    "define"
+  ],
+  "author": "ricdotnet",
+  "license": "ISC",
+  "dependencies": {
+    "node": "14.18.1"
+  }
+}
