@@ -1,6 +1,6 @@
 {
   "name": "urbn",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "get urban dictionary definitions displayed on your app the easy way",
   "main": "urbn.js",
   "scripts": {
