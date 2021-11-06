@@ -12,10 +12,14 @@ npm install urbn
 Two different ways you can use this, as shown below.
 ```javascript
 const u = require('urbn').Urbn();
-u.getFirst('term')
+u.getFirst('term');
 
 //------------//
 
 const u = require('urbn');
-u.Urbn().getFirst('term')
+u.Urbn().getFirst('term');
+
+// available methods
+.getFirst(term);
+.getAll(term);
 ```
