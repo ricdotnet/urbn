@@ -80,8 +80,8 @@ class UrbnDictionary {
   /**
    * Returns an array of random word definitions.
    * From this array you can get one with its index.
-   * TODO: get a random from within the list... chaining method to allow the user to define 1 index
-   * @returns {Promise<unknown>}
+   * TODO: get a random from within the list... method to allow the user to define 1 index
+   * @returns {Promise<Object>}
    */
   getRandom() {
     return new Promise((resolve, reject) => {
