@@ -3,9 +3,10 @@ const http = require('https');
 class UrbnDictionary {
 
   _api;
+  _data = '';
 
   constructor() {
-    this._api = 'https://api.urbandictionary.com/v0/define?term=';
+    this._api = 'https://api.urbandictionary.com/v0/';
   }
 
   /**
@@ -15,8 +16,7 @@ class UrbnDictionary {
    */
   getFirst(term) {
     return new Promise((resolve, reject) => {
-      http.get(this._api + term, (res) => {
-        let data = '';
+      http.get(this._api + 'define?term=' + term, (res) => {
 
         if (typeof term === 'undefined') {
           reject(this.sendError('undefined', res.statusCode))
@@ -31,10 +31,10 @@ class UrbnDictionary {
         })
 
         res.on('data', chunk => {
-          data += chunk;
+          this._data += chunk;
         }).on('end', () => {
           try {
-            resolve(JSON.parse(data).list[0])
+            resolve(JSON.parse(this._data).list[0])
           } catch (error) {
             reject({error: error})
           }
@@ -50,8 +50,7 @@ class UrbnDictionary {
    */
   getAll(term) {
     return new Promise((resolve, reject) => {
-      http.get(this._api + term, (res) => {
-        let data = '';
+      http.get(this._api + 'define?term=' + term, (res) => {
 
         if (typeof term === undefined) {
           reject(this.sendError('undefined', res.statusCode));
@@ -66,11 +65,33 @@ class UrbnDictionary {
         })
 
         res.on('data', chunk => {
-          data += chunk;
+          this._data += chunk;
         }).on('end', () => {
           try {
-            resolve(JSON.parse(data).list)
+            resolve(JSON.parse(this._data).list)
           } catch (error) {
+            reject(this.sendError('generic', null, error))
+          }
+        })
+      })
+    })
+  }
+
+  /**
+   * Returns an array of random word definitions.
+   * From this array you can get one with its index.
+   * TODO: get a random from within the list... chaining method to allow the user to define 1 index
+   * @returns {Promise<unknown>}
+   */
+  getRandom() {
+    return new Promise((resolve, reject) => {
+      http.get(this._api + 'random', (res) => {
+        res.on('data', chunk => {
+          this._data += chunk;
+        }).on('end', () => {
+          try{
+            resolve(JSON.parse(this._data).list);
+          }catch (error) {
             reject(this.sendError('generic', null, error))
           }
         })
