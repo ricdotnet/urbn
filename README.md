@@ -33,7 +33,10 @@ Added type definition to use with typescript.
 import {Urbn} from 'urbn';
 const u = new Urbn();
 
-u.getFirst(term: string): Promise<any>;
-u.getAll(term: string): Promise<any>;
-u.getRandom(): Promise<any>;
+u.getFirst(term: string): Promise<object>;
+u.getAll(term: string): Promise<object>;
+u.getRandom(): Promise<object>;
+u.getRandom(term: string): Promise<object>;
+// using getRandom('term') will return a single definition
+// as opposed to getFirst() it will return one random from an array of 10
 ```
