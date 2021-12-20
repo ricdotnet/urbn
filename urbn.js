@@ -83,8 +83,20 @@ class UrbnDictionary {
    * TODO: get a random from within the list... method to allow the user to define 1 index
    * @returns {Promise<Object>}
    */
-  getRandom() {
+  async getRandom(term) {
     return new Promise((resolve, reject) => {
+
+      if (term) {
+        let random = [];
+        this.getAll(term).then((res) => {
+          random = [...res];
+          const index = Math.round(Math.random()*random.length);
+          resolve(random[index]);
+        }).catch((error) => {
+          console.log(error);
+        })
+      }
+
       http.get(this._api + 'random', (res) => {
         res.on('data', chunk => {
           this._data += chunk;
