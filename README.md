@@ -26,3 +26,14 @@ u.Urbn().getFirst('term')
 .getAll(term) // gets all from the "page"
 .getRandom() // retrieves an array of random definitions
 ```
+
+### Types
+Added type definition to use with typescript.
+```typescript
+import {Urbn} from 'urbn';
+const u = new Urbn();
+
+u.getFirst(term: string): Promise<any>;
+u.getAll(term: string): Promise<any>;
+u.getRandom(): Promise<any>;
+```
